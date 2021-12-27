@@ -12,7 +12,7 @@ local pos = {
 }
 
 for _, line in pairs(lines) do
-   if line:find('forward') ~= nil then
+   if line:find('forward') then
         pos['horizontal'] = pos['horizontal'] + tonumber(line:sub(line:find(' '), #line))
     elseif line:find('down') then 
         pos['depth'] = pos['depth'] + tonumber(line:sub(line:find(' '), #line))
@@ -20,4 +20,6 @@ for _, line in pairs(lines) do
         pos['depth'] = pos['depth'] - tonumber(line:sub(line:find(' '), #line))
    end
 end
+
+print('Horizontal: '..pos['horizontal']..'\n'..'Depth: '..pos['depth'])
 print(pos['depth']*pos['horizontal'])
