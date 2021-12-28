@@ -19,3 +19,8 @@ Solutions for adventOfCode In lua (ps-It's my first time working with lua, so fe
 	  which case, we get the number with `1` in `getOxyGen` and `0` in
 	  `getCo2Gen`. In the second function, for `getCo2Gen` we invert the
 	  values, so `greater = 0 -> greater = 1` and vice versa.
+- DAY#4
+	- All the solution files got deleted, this is a lesson kids, ALIAS `rm` to
+	  `rm -i` in your bashrc, or you will end up like me. Well, Currently I am
+	  too tired to implement my solution of 100 lines again (maybe I will get
+	  around to doing it later), right now, I am moving onto day#5
