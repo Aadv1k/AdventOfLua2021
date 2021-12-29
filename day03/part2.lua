@@ -76,7 +76,6 @@ local result = {
     co2Rating = nil,
 }
 
---[[
 oxyData = data
 for count=1,#data[1],1 do
     if nOfBinary(oxyData, count)['greater'] ~= nil then
@@ -85,14 +84,12 @@ for count=1,#data[1],1 do
        break
     end
 end
---]]
 
 co2Data = data
 for count=1,#data[1],1 do
     if nOfBinary(co2Data, count)['greater'] ~= nil then
         co2Data = filterByLowerTarget(co2Data, count)
     else
-        print(#co2Data)
         for _,binary in pairs(co2Data) do
             if string.sub(binary, count, count) == '0' then
                 result['co2Rating'] = binary
@@ -102,9 +99,6 @@ for count=1,#data[1],1 do
     end
 end
 
---[[
 print(result['oxygenRating'], result['co2Rating'])
 print(tonumber(result['oxygenRating'], 2), tonumber(result['co2Rating'], 2))
 print(tonumber(result['oxygenRating'], 2) * tonumber(result['co2Rating'], 2))
-
-]]
