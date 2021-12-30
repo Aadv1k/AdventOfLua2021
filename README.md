@@ -25,19 +25,19 @@ Solutions for adventOfCode In lua (ps-It's my first time working with lua, so fe
 	  so `1,0,1,1,2,3 -> {{1, 0, 1}, {1, 2, 3}}` It is important to now, that
 	  the numerical values were attatched as a table `{val=1, marked=false}`
 	  this is done to check the winning board. the we have two helper functions
-	  `checkCol` and `checkRow`, both of which take in a block, and a position,
-	  and return true or false based on the `marked` value of the numbers (so
+	  checkCol and checkRow, both of which take in a block, and a position,
+	  and return true or false based on the marked value of the numbers (so
 	  true would mean that all numbers in a row or col were marked, thus
-	  marking our winner) in `simBingo` We loop through all the draws and the
-	  blocks, we pass the block through `checkCol` or `checkRow`, which if
+	  marking our winner) in simBingo We loop through all the draws and the
+	  blocks, we pass the block through checkCol or checkRow, which if
 	  returns true, we end the function there and return the block, and the
 	  draw before the current draw, else we just loop through all the num
 	  values, and if they match the draw value, we "mark" them by setting
 	  `marked = true`.
 	- **Part2**- I suspect there might be a better solution to do this, but
-	  what I ended up implementing was a function `winningBlockIndex` which is
-	  a modified version of `simBingo` and return the index of the block which
+	  what I ended up implementing was a function winningBlockIndex which is
+	  a modified version of simBingo and return the index of the block which
 	  one. We then have a for loop which extends till #blocks-1 (total number
 	  of blocks minus 1, so 2 in sample.txt), removing the block with the
-	  `winningBlockIndex`, so finally we are left with a table with just a
+	  winningBlockIndex, so finally we are left with a table with just a
 	  single block, which we can say for sure, is the last winning one.
