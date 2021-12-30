@@ -1,4 +1,4 @@
-local file = io.open('./sample.txt')
+local file = io.open('./input.txt')
 local rawDraws = file:read()
 local rawContent = file:read('a')
 file:close()
@@ -31,6 +31,12 @@ for _,vals in pairs(boards) do
 end
 
 blocks = {}
+-- lua's "natural" indexes :/
+-- 500 rows
+-- 1
+-- 1 + 5 = 6 
+-- 1 + 4 = 5
+
 for count=1,#rows,5 do
 	currentBlock = {}
 	for c=count,count+4 do
@@ -65,22 +71,106 @@ function checkRow(block, pos)
 	return true
 end
 
-t = simBingo(draws, blocks) 
-print(t)
-
---[[
-b = t['block']
-print(t['t'])
-
-print(t['draw']['val'])
-
-sum = 0
-for _,row in pairs(b) do
-	for _,num in pairs(row) do
-		print(num['val'])
+function winningBlockIndex(draws, blocks)
+	for _,draw in pairs(draws) do
+		if draw['drawn'] ~= true then
+			for i,block in pairs(blocks) do
+				
+				for count=1,5 do
+					if checkRow(block, count) then
+						return i
+					elseif checkCol(block, count) then
+						return i
+					end
+				end
+				
+				for _,row in pairs(block) do
+					for _,num in pairs(row) do
+						if num['marked'] ~= true and num['val'] == draw['val'] then
+							num['marked'] = true
+						end
+					end
+				end
+				
+			end
+		end
 	end
 end
 
+function simBingo(draws, blocks)
+	for _,draw in pairs(draws) do
+		if draw['drawn'] ~= true then
+			for _,block in pairs(blocks) do
+				for count=1,5 do
+					if checkRow(block, count) then
+						-- This step is done the previous draw was the
+						-- "correct" one, but as we check it in the next
+						-- iteration, we get the wrong one, which is why we
+						-- need to use the previous one
+
+						currentDraw = nil
+						for index,val in pairs(draws) do
+							if val == draw then
+								currentDraw = index
+							end
+						end
+
+						return 	{
+							type = 'r',
+							index = count,
+							block = block,
+							draw = draws[currentDraw-1]['val']
+						}
+					elseif checkCol(block, count) then
+						-- This step is done the previous draw was the
+						-- "correct" one, but as we check it in the next
+						-- iteration, we get the wrong one, which is why we
+						-- need to use the previous one
+						currentDraw = nil
+						for index,val in pairs(draws) do
+							if val == draw then
+								currentDraw = index
+							end
+						end
+						return 	{
+							type = 'c',
+							index = count,
+							block = block,
+							draw = draws[currentDraw-1]['val']
+						}
+
+					end
+				end
+				
+				for _,row in pairs(block) do
+					for _,num in pairs(row) do
+						if num['marked'] ~= true and num['val'] == draw['val'] then
+							num['marked'] = true
+						end
+					end
+				end
+				
+			end
+		end
+	end
+end
+
+for count=1,#blocks-1 do
+	index = winningBlockIndex(draws, blocks)
+	table.remove(blocks, index)
+end
+
+t = simBingo(draws, blocks) 
+sum = 0
+for _,row in pairs(t['block']) do
+	for _,num in pairs(row) do
+		if num['marked'] == false then
+			sum = sum + num['val']
+		end
+	end
+end
+
+print('Last winning block: ')
 print('Sum: '..sum, 'Draw: '..t['draw'])
 print('Score: '..sum*t['draw'])
-]]
+
