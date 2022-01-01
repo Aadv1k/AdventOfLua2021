@@ -15,3 +15,69 @@ A lanternfish that creates a new fish resets its timer to 6, not 7 (because 0
 is included as a valid timer value). The new lanternfish starts with an
 internal timer of 8 and does not start counting down until the next day.
 
+
+{
+	1: 1
+	2: 1
+	3: 2
+	4: 1
+}
+
+{
+	0: 1
+
+	1: 1
+	2: 2
+	3: 1
+	6: 1
+	8: 1
+}
+
+{
+	1: 2
+	2: 1
+	5: 1
+	6: 1
+	7: 1
+	8: 1
+}
+
+{
+	1: 1
+	5: 1
+	7: 1
+	4: 1
+	3: 1
+	8: 2
+	6: 2
+}
+
+{
+	4: 1
+	6: 1
+	3: 1
+	2: 1
+	7: 2
+	5: 2
+	8: 1
+	6: 1
+}
+
+{
+	3: 1
+	5: 1
+	2: 1
+	1: 1
+	6: 2
+	4: 2
+	7: 1
+	5: 1
+}
+
+
+
+
+
+
+
+

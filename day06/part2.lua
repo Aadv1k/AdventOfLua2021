@@ -1,7 +1,4 @@
--- BASICALLY IMPLEMENT KEY..TABLES instead of the normal ones as that takes
--- more time
-
-local file = io.open('./input.txt')
+local file = io.open('./sample.txt')
 local contents = file:read('all')
 file:close()
 
@@ -9,29 +6,50 @@ lf = {}
 for i in contents:gmatch('%d+') do
 	table.insert(lf, tonumber(i))
 end
+initial = {}
 
-local days = 256
+for i,v in pairs(lf) do
+	if initial[v] == nil then
+		initial[v] = 0
+	end
+	initial[v] = initial[v] + 1
+end
 
-states = {}
+for count=1,3 do
+	cs = {}
+	print('============')
+	for k,v in pairs(initial) do
+		print(k..': '..v)
+		if k == 0 then
 
-for count=1,days do
-	for index,v in pairs(lf) do
-		i = tostring(index)
-		if v == 0 then
-			if states[i] ~= nil then
-				states[i] = 6
-				states['9'] = 9
-			else
-				states[i] = 0
+			if not cs[6] then
+				cs[6] = 0
 			end
-		elseif v then
-			if states[i] ~= nil then
-				states[i] = states[i] - 1
+
+			cs[6] = cs[6] + initial[k]
+
+			if not cs[8] then
+				cs[8] = 0
 			end
+		
+			cs[8] = cs[8] + initial[k]
+
+		else
+			if not cs[k-1] then
+				cs[k-1] = nil
+			end
+
+			cs[k-1] = initial[k]
 		end
 	end
-end
-for _,v in pairs(states) do
-	print(_, v)
+	initial = cs
 end
 
+
+
+count = 0
+for i,v in pairs(initial) do
+	count = count + v
+end
+
+print(count)
