@@ -1,6 +1,8 @@
 # Advent of Code 2021 in Lua
 Solutions for adventOfCode In lua (ps-It's my first time working with lua, so feel free to point out any bad practices.)
 
+**Done with this for now**
+
 ### Explanation
 - DAY#3
 	- **Part1**- For part one, `n` (where n is equal to the length of the digit)
@@ -41,3 +43,5 @@ Solutions for adventOfCode In lua (ps-It's my first time working with lua, so fe
 	  of blocks minus 1, so 2 in sample.txt), removing the block with the
 	  winningBlockIndex, so finally we are left with a table with just a
 	  single block, which we can say for sure, is the last winning one.
+	
+
