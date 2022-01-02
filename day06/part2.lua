@@ -1,4 +1,4 @@
-local file = io.open('./sample.txt')
+local file = io.open('./input.txt')
 local contents = file:read('all')
 file:close()
 
@@ -15,41 +15,36 @@ for i,v in pairs(lf) do
 	initial[v] = initial[v] + 1
 end
 
-for count=1,3 do
-	cs = {}
-	print('============')
-	for k,v in pairs(initial) do
-		print(k..': '..v)
-		if k == 0 then
+days = 256
 
-			if not cs[6] then
-				cs[6] = 0
+for count=1,days do
+	new = {}
+	for key,item in pairs(initial) do
+		if key == 0 then
+			if not new[6] then
+				new[6] = 0
 			end
+			new[6] = new[6] + initial[key]
 
-			cs[6] = cs[6] + initial[k]
-
-			if not cs[8] then
-				cs[8] = 0
+			if not new[8] then
+				new[8] = 0
 			end
-		
-			cs[8] = cs[8] + initial[k]
-
+			new[8] = new[8] + initial[key]
 		else
-			if not cs[k-1] then
-				cs[k-1] = nil
+			if not new[key-1]  then
+				new[key-1]  = 0
 			end
-
-			cs[k-1] = initial[k]
+			new[key-1] = new[key-1] + initial[key]
 		end
 	end
-	initial = cs
+	initial = new
 end
-
-
 
 count = 0
 for i,v in pairs(initial) do
+	print(i..': '..v)
 	count = count + v
 end
 
-print(count)
+print('There will be '..count..' number of fish after '..days..' days ')
+

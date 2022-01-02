@@ -74,10 +74,45 @@ internal timer of 8 and does not start counting down until the next day.
 	5: 1
 }
 
+==============================================================
+==============================================================
+==============================================================
+==============================================================
+==============================================================
 
 
+{
+	1: 1
+	2: 1
+	3: 2
+	4: 1
+}
+
+{
+	0: 1
+
+	1: 1
+	2: 2
+	3: 1
+	6: 1
+	9: 1
+}
 
 
+loop 5
+go through the dict
+another = {}
+if key == 0 then
+	another[9] = another[k] -- so if there are two zeroes, then two fish with a value
+	of 8 will be added 
 
+	another[6] = another[k] -- two of six
+else
+	if another[k-1] == 0 then
+	another[9] = another[k]
+	another[6] = another[k]
+	else
+		another[k-1] = another[k]
+	end
 
-
+another = dict
