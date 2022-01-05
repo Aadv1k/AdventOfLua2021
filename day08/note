@@ -1,0 +1,120 @@
+aaaa
+bbbb
+cccc
+dddd
+eeee
+ffff
+gggg
+
+7 segments
+
+1, 4, 7, and 8
+
+
+acedgfb: 8
+
+cdfbe: 5
+gcdfa: 2
+fbcad: 3
+
+cefabd: 9
+cdfgeb: 6
+cagedb: 0
+
+dab: 7
+
+eafb: 4
+
+ab: 1
+
+---------------------------------
+
+acedgfb: 8
+
+cdfbe: 5
+gcdfa: 2
+fbcad: 3
+
+cefabd: 9
+cdfgeb: 6
+cagedb: 0
+
+eafb: 4
+dab: 7
+ab: 1
+
+
+
+ dddd
+e    a
+e    a
+ ffff
+g    b
+g    b
+ cccc
+
+
+acedgfb: 8
+
+cdfbe: 5
+gcdfa: 2
+fbcad: 3
+
+cefabd: 9
+abcdef
+
+cdfgeb: 6
+bcdefg
+
+cagedb: 0
+abcdeg
+
+eafb: 4
+ab: 1
+
+dab: 7
+
+
+
+1800 4199733
+
+from 8 we can deduce
+8: abcdefg
+    3: acdfg
+    2: acdeg
+    5: abdfg
+
+
+(acd)
+3 must contain f,g
+2 must contain e,g
+
+5 starts with abd
+
+abc
+efg
+bcdef
+
+does not contain agc
+cdfbe
+
+6
+if we put 1 (2) over 6 there should only be 1 overlap 
+
+if we put 4 (4) over 0, there should only be 4 overlaps
+
+if it does not fit these criterion, its 9
+
+---- 
+
+5
+if we put 1 (2) over 3 there should be 2 overlaps 
+
+if we put 1 (2) over 2 then there should be 1 overlap
+
+    
+else its 5
+
+
+acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | 
+cdfeb fcadb cdfeb cdbaf
