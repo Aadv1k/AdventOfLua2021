@@ -24,3 +24,4 @@ for count=2,#sums,1 do
 end
 
 print(result)
+print(result)
