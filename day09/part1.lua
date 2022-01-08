@@ -11,15 +11,6 @@ for lines in contents:gmatch('[^\r\n]+') do
     table.insert(block, row)
 end
 
--- risk level = 1+height
--- different cases for :-
---
--- corners of the block
--- numbers at the top and last row
--- numbers at the edges
-
--- check if its a corner, or edge
-
 local result = {}
 -- loop through all the rows
 for rc=1,#block do
@@ -35,18 +26,18 @@ for rc=1,#block do
                     current = block[rc][cc]
                 }
 
-                local currentCluster = {} 
-                for k,v in pairs(pos) do
-                    table.insert(currentCluster, v)
+                local currentcluster = {}
+                for _,v in pairs(pos) do
+                    table.insert(currentcluster, v)
                 end
 
-                if math.min(table.unpack(currentCluster)) == block[rc][cc] then
+                if math.min(table.unpack(currentcluster)) == block[rc][cc] then
                     table.insert(result, block[rc][cc])
                 end
             end
         end
     end
-                
+
 
 local totalRisk = 0
 for _,nums in pairs(result) do

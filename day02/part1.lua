@@ -6,10 +6,7 @@ for s in content:gmatch("[^\r\n]+") do
     table.insert(lines, s)
 end
 
-local pos = {
-    horizontal = 0,
-    depth = 0
-}
+local pos = { horizontal = 0, depth = 0 }
 
 for _, line in pairs(lines) do
    if line:find('forward') then
