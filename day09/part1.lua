@@ -1,4 +1,4 @@
-local file = io.open('./input.txt')
+local file = io.open('./sample.txt')
 local contents = file:read("a")
 file:close()
 
@@ -10,6 +10,44 @@ for lines in contents:gmatch('[^\r\n]+') do
     end
     table.insert(block, row)
 end
+
+function table.print(tab, delem) 
+    if delem ~= nil then
+        local delem = delem
+    else
+        local delem = ''
+    end
+
+    local s = ''
+    for count=1,#tab do
+        if type(tab[count]) == 'table' then
+
+            local nested = ''
+
+            for ns=1,#tab[count] do
+                if ns+1 > #tab[count] then
+                    nested = nested..tab[count][ns]
+                    break
+                end
+                nested = nested..tab[count][ns]..','
+            end
+
+            s = s..delem..'{ '..nested..' }, '
+        else
+            if count+1 > #tab then
+                s = s..tab[count]
+                break
+            end
+
+            s = s..tab[count]..', '
+        end
+
+    end
+    print('{ '..s..' }')
+end
+
+print(table.print(block, '\n'))
+
 
 local result = {}
 -- loop through all the rows
